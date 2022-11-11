@@ -19,7 +19,7 @@ export class FavoritoPage implements OnInit {
 
   public listaFav: Favorito[];
   public nuevoListado: Favorito[];
-  
+
 
   constructor(
     public favoritos: FavoritosService,
@@ -33,7 +33,7 @@ export class FavoritoPage implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.listaFav = this.favoritos.favoritosDelUsuario
+    this.listaFav = this.favoritos.favoritosDelUsuario;
 
     console.log(this.authService.email);
 
@@ -43,12 +43,12 @@ export class FavoritoPage implements OnInit {
   async eliminarLista(listaItem: Favorito) {
     const loading = await this.loadingController.create();
     await loading.present();
-    
+
     const user = await this.favoritos.eliminarLista(listaItem);
     await loading.dismiss();
     this.showAlert('Favorito eliminado', 'xx');
-    console.log("Eliminar lista:", listaItem);
-   
+    console.log('Eliminar lista:', listaItem);
+
   }
 
   async showAlert(header, message) {
@@ -58,38 +58,39 @@ export class FavoritoPage implements OnInit {
       buttons: ['OK'],
     });
     await alert.present();
-  }  
+  }
 
   doRefresh(event) {
     this.listaFav = null; // this is replacement of splice
-    this.ngOnInit(); // 
+    this.ngOnInit(); //
     setTimeout(() => {
       //this.router.navigate(['/favorito']);
       event.target.complete();
-  }, 2000);  
+  }, 2000);
   }
 
   async verLugar(id: string, nombre: string){
-    console.log("Dio click en " + id);
+    console.log('Dio click en ' + id);
     this.proveedor.idLugar = id;
     this.proveedor.nombreLugar = nombre;
     this.router.navigateByUrl('lugar', { replaceUrl: true });
-  }  
+  }
 
   // abrirGaleriaDelDispositivo(){
   //   console.log("abriendo galería del dispositivo");
   //   this.galeriaFotos.getLibreriaFotos();
-    
-  // }  
+
+  // }
 
 
   verFotosDelDispositivo(){
-    console.log("llamando getLibrary");
-    
+    console.log('llamando getLibrary');
+
     this.photoLibrary.requestAuthorization().then(() => {
 
       this.photoLibrary.getLibrary().subscribe({
         next: library => {
+          // eslint-disable-next-line prefer-arrow/prefer-arrow-functions
           library.forEach(function(libraryItem) {
             console.log(libraryItem.id); // La ID de la foto
             console.log(libraryItem.photoURL); // La URL de la imagen, será diferente según la plataforma.
