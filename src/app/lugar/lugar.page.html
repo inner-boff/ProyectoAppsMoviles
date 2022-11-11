@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-toolbar color="tertiary">
+    <ion-title>{{this.proveedor.nombreLugar}}</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="lista-lugar"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>  
+</ion-header>
+
+<ion-content >
+
+  <ion-list >
+    <ion-item  *ngFor="let contenido of contenidos">
+      <ion-label><b>{{contenido.nombre}} : </b> <pre>{{contenido.valor}}</pre> </ion-label>
+    </ion-item>
+  </ion-list>  
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="colorBoton()" [ngStyle]="{ '--color' : boton ? 'red' : 'black' }" (click)="presentToast1()" (click)="guardarFavs()" >
+      <ion-icon name="heart-circle-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+</ion-content>

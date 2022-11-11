@@ -1,0 +1,76 @@
+
+
+<!-- 
+  <ion-content class="contenedor">
+    
+    <ion-content class="body">
+    <h1>Login</h1>
+    <img class="logo" src="../../assets/img/login.png" alt="logo">
+  
+    
+      <form [formGroup]="credentials" (ngSubmit)="login()">
+    
+        <ion-item fill="solid" class="form-floating mb-3">
+            <ion-input type="email" placeholder="dirección de email" formControlName="email"></ion-input>
+            <ion-note slot="error" *ngIf="(email.dirty || email.touched) && email.errors">La dirección de email no es válida</ion-note>
+        </ion-item>
+    
+        <ion-item fill="solid" class="form-floating mb-3">
+          <ion-input type="password" placeholder="contraseña" formControlName="password"></ion-input>
+          <ion-note slot="error" *ngIf="(password.dirty || password.touched) && password.errors">Contraseña incorrecta</ion-note>
+      </ion-item>
+    
+        <ion-button expand="full" type="submit" [disabled]="!credentials.valid">Login</ion-button>
+        <ion-button expand="full" type="button" (click)="register()">Registrarse</ion-button>
+    
+      </form>
+    
+    
+    
+    
+  
+  </ion-content>
+    
+  
+  </ion-content>
+  
+-->
+
+<div class="contenedor" style="background-image: url('../../assets/img/ObeliscoBA2017.jpg') ; background-position: center center; background-repeat: no-repeat; background-attachment: fixed; background-size: cover;">
+  
+  <div class="body">
+    
+      <img class="logo" src="../../assets/img/login1.png" alt="logo">
+      
+      <h1>Login</h1>
+      <form [formGroup]="credentials" (ngSubmit)="login()">
+          <div class="form-floating mb-3">
+              <input type="email" class="form-control" formControlName="email" placeholder="dirección de email">
+              <ion-note slot="error" *ngIf="(email.dirty || email.touched) && email.errors"> <b>La dirección de email no es válida</b></ion-note>
+              <label >Mail</label>
+            </div>
+            <div class="form-floating mb-3">
+              <input type="password" class="form-control" formControlName="password"  placeholder="contraseña">
+              <ion-note slot="error" *ngIf="(password.dirty || password.touched) && password.errors"> <b>Contraseña incorrecta</b></ion-note>
+              <label >Contraseña</label>
+            </div>
+      
+      
+        <div class="d-grid gap-2">
+            
+            
+          <button class="btn btn-primary" expand="full" type="submit" [disabled]="!credentials.valid">Login</button>
+          <p><a routerLink="/recuperar-usuario"> <b>Recuperar contraseña</b></a></p>
+          
+          <p><b>No tienes cuenta?</b> <a routerLink="/registro"> <b>Registarse</b></a></p>
+          
+        </div>
+        
+      
+      </form>
+  </div>
+  </div>
+  
+  
+  
+

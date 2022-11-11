@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-toolbar color="tertiary">
+    <ion-title>{{this.proveedor.opcion}}</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="home"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>  
+</ion-header>
+
+<ion-content style="background-image: url('../../assets/img/5437842.jpg') ; background-position: center center; background-repeat: no-repeat; background-attachment: fixed; background-size: cover;" >
+
+  <!-- esta es la lista devuele los lugares de la categoria elegida -->
+  <ion-list class="body">
+    <ion-item *ngFor="let lugar of lugares">
+      <ion-label class="lista" (click)="verLugar(lugar.id, lugar.nombre)" > {{lugar.nombre}} </ion-label>
+      <img style="width: 15px; padding: 1px;" slot="start" src="../../assets/img/points.png">
+      <img style="width: 15px; padding: 1px;" slot="end" src="../../assets/img/right.png">    
+    </ion-item>
+  </ion-list>
+
+  <div class="pie">
+    <footer >
+      <p>Hecho por AfterWork - 2022</p>
+      <p>
+        Fuente de los datos:
+        <a href="https://datosabiertos-apis.buenosaires.gob.ar/BA_Root/Documentacion?schema_name=busqueda_lugares">
+          Lugares de interés de la ciudad de Buenos Aires</a>
+      </p>
+    </footer>
+  </div>
+
+</ion-content>
