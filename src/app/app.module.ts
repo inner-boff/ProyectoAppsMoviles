@@ -21,7 +21,7 @@ import { Proveedor1Service } from './services/proveedor1.service';
 import { AngularFireModule } from '@angular/fire/compat';
 
 // Para acceder a las fotos
-import { PhotoLibrary } from "@awesome-cordova-plugins/photo-library/ngx";
+//import { PhotoLibrary } from "@awesome-cordova-plugins/photo-library/ngx";
 
 
 @NgModule({
@@ -36,11 +36,10 @@ import { PhotoLibrary } from "@awesome-cordova-plugins/photo-library/ngx";
     provideStorage(() => getStorage()),
     AngularFireModule.initializeApp(environment.firebaseConfig),//esto es lo que permite que nuestro forulario funcione
     AngularFireAuthModule
-   
   ],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, Proveedor1Service, 
+  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, Proveedor1Service,
   // Para acceder a las fotos
-  PhotoLibrary
+  //PhotoLibrary
 ],
   bootstrap: [AppComponent],
 })

@@ -58,10 +58,15 @@ const routes: Routes = [
     loadChildren: () => import('./favorito/favorito.module').then( m => m.FavoritoPageModule)
   },  
   {
+    path: 'galeria-fotos',
+    loadChildren: () => import('./galeria-fotos/galeria-fotos.module').then( m => m.GaleriaFotosPageModule)
+  },
+  {
     path: '**',
     redirectTo: '',
     pathMatch: 'full'
   },
+
 ];
 @NgModule({
   imports: [
