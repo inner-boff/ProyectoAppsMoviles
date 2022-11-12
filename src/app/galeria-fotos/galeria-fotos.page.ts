@@ -45,9 +45,9 @@ export class GaleriaFotosPage implements OnInit {
 			directory: Directory.Data
 		})
 			.then(
-				(result) => {
+				(resultado) => {
           // Revisar esta línea:
-					this.loadFileData(result.files);
+					this.loadFileData(resultado.files);
 				},
 				async (err) => {
 					// Folder does not yet exists!
@@ -63,9 +63,13 @@ export class GaleriaFotosPage implements OnInit {
     }
     // Get the actual base64 data of an image
 	// base on the name of the file
-	async loadFileData(fileNames: string[]) {
-		for (const f of fileNames) {
-			const filePath = `${IMAGE_DIR}/${f}`;
+	async loadFileData(fileNames: any[]) {
+		// eslint-disable-next-line prefer-const
+		for (let f of fileNames) {
+			const filePath = `${IMAGE_DIR}/${f.name}`;
+
+      // eslint-disable-next-line @typescript-eslint/quotes
+      console.log("Ruta Archivo: "+filePath);
 
 			const readFile = await Filesystem.readFile({
 				path: filePath,
@@ -77,6 +81,7 @@ export class GaleriaFotosPage implements OnInit {
 				path: filePath,
 				data: `data:image/jpeg;base64,${readFile.data}`
 			});
+      console.log(readFile);
 		}
 	}
 
