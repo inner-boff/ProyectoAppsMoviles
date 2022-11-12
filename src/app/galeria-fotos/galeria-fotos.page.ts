@@ -6,7 +6,7 @@ import { Camera, CameraResultType, CameraSource, Photo } from '@capacitor/camera
 
 const IMAGE_DIR = 'stored-images';
 
-interface LocalFile {
+interface ArchivoLocal {
 	name: string;
 	path: string;
 	data: string;
@@ -19,7 +19,7 @@ interface LocalFile {
 })
 export class GaleriaFotosPage implements OnInit {
 
-  images: LocalFile[] = [];
+  images: ArchivoLocal[] = [];
 
   constructor(
     private plt: Platform,
@@ -36,7 +36,7 @@ export class GaleriaFotosPage implements OnInit {
 		this.images = [];
 
 		const loading = await this.loadingCtrl.create({
-			message: 'Loading data...'
+			message: 'Cargando datos...'
 		});
 		await loading.present();
 
@@ -46,11 +46,9 @@ export class GaleriaFotosPage implements OnInit {
 		})
 			.then(
 				(resultado) => {
-          // Revisar esta línea:
 					this.loadFileData(resultado.files);
 				},
 				async (err) => {
-					// Folder does not yet exists!
 					await Filesystem.mkdir({
 						path: IMAGE_DIR,
 						directory: Directory.Data
@@ -64,12 +62,10 @@ export class GaleriaFotosPage implements OnInit {
     // Get the actual base64 data of an image
 	// base on the name of the file
 	async loadFileData(fileNames: any[]) {
-		// eslint-disable-next-line prefer-const
-		for (let f of fileNames) {
+		for (const f of fileNames) {
 			const filePath = `${IMAGE_DIR}/${f.name}`;
 
-      // eslint-disable-next-line @typescript-eslint/quotes
-      console.log("Ruta Archivo: "+filePath);
+      console.log('Ruta Archivo: '+filePath);
 
 			const readFile = await Filesystem.readFile({
 				path: filePath,
@@ -94,7 +90,7 @@ export class GaleriaFotosPage implements OnInit {
 		toast.present();
 	}
 
-	async selectImage() {
+	async seleccionarImagen() {
     const image = await Camera.getPhoto({
         quality: 90,
         allowEditing: false,
@@ -103,12 +99,12 @@ export class GaleriaFotosPage implements OnInit {
     });
 
     if (image) {
-        this.saveImage(image);
+        this.guardarImagen(image);
     }
 }
 
 // Create a new file from a capture image
-async saveImage(photo: Photo) {
+async guardarImagen(photo: Photo) {
   const base64Data = await this.readAsBase64(photo);
 
   const fileName = new Date().getTime() + '.jpeg';
@@ -123,8 +119,6 @@ async saveImage(photo: Photo) {
   this.loadFiles();
 }
 
-
- // https://ionicframework.com/docs/angular/your-first-app/3-saving-photos
  private async readAsBase64(photo: Photo) {
   if (this.plt.is('hybrid')) {
       const file = await Filesystem.readFile({
@@ -154,18 +148,18 @@ convertBlobToBase64 = (blob: Blob) => new Promise((resolve, reject) => {
 });
 
 	// eslint-disable-next-line @typescript-eslint/member-ordering
-	async startUpload(file: LocalFile) {
+	async startUpload(file: ArchivoLocal) {
 		// TODO
 	}
 
 	// eslint-disable-next-line @typescript-eslint/member-ordering
-	async deleteImage(file: LocalFile) {
+	async borrarImagen(file: ArchivoLocal) {
 		await Filesystem.deleteFile({
       directory: Directory.Data,
       path: file.path
   });
   this.loadFiles();
-  this.presentToast('File removed.');
+  this.presentToast('Archivo eliminado.');
 	}
 
 

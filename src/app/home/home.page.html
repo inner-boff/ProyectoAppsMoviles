@@ -4,8 +4,6 @@
       <ion-button (click)="logout()">
         cerrar sesión
         <ion-icon name="log-out-outline"> </ion-icon>
-
-
       </ion-button>
     </ion-buttons>
 
@@ -13,12 +11,7 @@
   </ion-toolbar>
 </ion-header>
 
-
-
-
-<ion-content class="contenedor" >
-
-
+<ion-content class="contenedor">
   <div class="body" (click)="navegarAListado('Gastronomía -> Restaurant')">
     <h1>Restaurantes</h1>
 
@@ -32,48 +25,43 @@
       <ion-slide>
         <img src="../../assets/img/restaurante.jpg" />
       </ion-slide>
-
     </ion-slides>
 
     <ion-card-content>
-      Nuestros restaurantes locales ofrecen lo mejor de nuestra ciudad. Desde cervezas locales,
-      cocina de temporada y amables camareros, ¡creemos que le gustarán estos lugares!
+      Nuestros restaurantes locales ofrecen lo mejor de nuestra ciudad. Desde
+      cervezas locales, cocina de temporada y amables camareros, ¡creemos que le
+      gustarán estos lugares!
     </ion-card-content>
-
-
   </div>
 
   <div class="body" (click)="navegarAListado('Museos')">
     <h1>Museos</h1>
     <ion-slides pager="true" [options]="option">
-
       <ion-slide>
         <img src="../../assets/img/museo_historico_nacional_1200_a_3.jpg" />
       </ion-slide>
       <ion-slide>
-        <img src="../../assets/img/museos-buenos-aires-viajes-turismo-baires-el-decorativo-07032022.webp" />
+        <img
+          src="../../assets/img/museos-buenos-aires-viajes-turismo-baires-el-decorativo-07032022.webp"
+        />
       </ion-slide>
       <ion-slide>
         <img src="../../assets/img/87dae2e53cb5a81b244b4b8214bfc05e.jpg" />
       </ion-slide>
-
     </ion-slides>
 
     <ion-card-content>
-      Hay museos de todas las formas, tamaños y colores. Desde pequeñas salas con unas pocas exposiciones hasta vastos
-      palacios
-      con cientos de ellas, encuentre el museo perfecto que se adapte a sus intereses a cualquier precio.
+      Hay museos de todas las formas, tamaños y colores. Desde pequeñas salas
+      con unas pocas exposiciones hasta vastos palacios con cientos de ellas,
+      encuentre el museo perfecto que se adapte a sus intereses a cualquier
+      precio.
     </ion-card-content>
-
-
   </div>
 
   <div class="body" (click)="navegarAListado('Clubes de Jazz -> Club de Jazz')">
     <h1>Clubes de Jazz</h1>
 
-
     <ion-slides pager="true" [options]="option">
-
       <ion-slide>
         <img src="../../assets/img/jazz-buenos-aires-1000x400.jpg" />
       </ion-slide>
@@ -83,21 +71,18 @@
       <ion-slide>
         <img src="../../assets/img/unnamed-13-1.jpg" />
       </ion-slide>
-
     </ion-slides>
     <ion-card-content>
       Para una experiencia musical relajada e íntima.
     </ion-card-content>
-
   </div>
-
 </ion-content>
 
 <ion-footer>
-	<ion-toolbar color="primary">
-		<ion-button routerLink="/favorito" fill="clear" expand="full" color="light">
-			<ion-icon slot="start" name="star-half-outline"></ion-icon>
-			Ir a mis lugares favoritos
-		</ion-button>
-	</ion-toolbar>
+  <ion-toolbar color="primary">
+    <ion-button routerLink="/favorito" fill="clear" expand="full" color="light">
+      <ion-icon slot="start" name="star-half-outline"></ion-icon>
+      Ir a mis lugares favoritos
+    </ion-button>
+  </ion-toolbar>
 </ion-footer>

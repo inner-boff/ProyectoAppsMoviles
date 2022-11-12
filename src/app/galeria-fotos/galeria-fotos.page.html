@@ -16,10 +16,11 @@
 				<ion-img [src]="file.data"></ion-img>
 			</ion-thumbnail>
 			<ion-label class="ion-text-wrap"> {{ file.name }} </ion-label>
-			<ion-button slot="end" fill="clear" (click)="startUpload(file)">
+			<!-- Este botón puede implementrarse en el futuro para cargara las imágenes al firebase Storage -->
+			<!-- <ion-button slot="end" fill="clear" (click)="startUpload(file)">
 				<ion-icon slot="icon-only" name="cloud-upload"></ion-icon>
-			</ion-button>
-			<ion-button slot="end" fill="clear" (click)="deleteImage(file)">
+			</ion-button> -->
+			<ion-button slot="end" fill="clear" (click)="borrarImagen(file)">
 				<ion-icon slot="icon-only" name="trash"></ion-icon>
 			</ion-button>
 		</ion-item>
@@ -28,7 +29,7 @@
 
 <ion-footer>
 	<ion-toolbar color="primary">
-		<ion-button fill="clear" expand="full" color="light" (click)="selectImage()">
+		<ion-button fill="clear" expand="full" color="light" (click)="seleccionarImagen()">
 			<ion-icon slot="start" name="camera"></ion-icon>
 			Cargar una nueva imagen
 		</ion-button>
