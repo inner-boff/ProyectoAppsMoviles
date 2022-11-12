@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Favorito</ion-title>
+    <ion-title>Mis lugares favoritos</ion-title>
     <ion-buttons slot="start">
       <ion-back-button defaultHref="home"></ion-back-button>
     </ion-buttons>
@@ -25,12 +25,16 @@
 
     
   </ion-list>
-
-  <p><a routerLink="/galeria-fotos"> <b>Galeria de Fotos</b></a></p>
-
  </ion-content>
 
-
+ <ion-footer>
+	<ion-toolbar color="primary">
+		<ion-button routerLink="/galeria-fotos" fill="clear" expand="full" color="light" (click)="selectImage()">
+			<ion-icon slot="start" name="camera"></ion-icon>
+			Ir a Galeria de Imágenes
+		</ion-button>
+	</ion-toolbar>
+</ion-footer>
 
 
   

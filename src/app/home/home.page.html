@@ -17,12 +17,7 @@
 
 
 <ion-content class="contenedor" >
-  <ion-fab class="favoritos" vertical="top" horizontal="end">
-    <ion-button routerLink="/favorito">
-      Lugares Favoritos
-      <ion-icon slot="end" name="star-half-outline"></ion-icon>
-    </ion-button>
-  </ion-fab>
+
 
   <div class="body" (click)="navegarAListado('Gastronomía -> Restaurant')">
     <h1>Restaurantes</h1>
@@ -93,10 +88,16 @@
     <ion-card-content>
       Para una experiencia musical relajada e íntima.
     </ion-card-content>
-    <!--Nota Pame:
-      Agregué un botoncito para redirigir a la página de clubes de jazz-->
-
 
   </div>
 
 </ion-content>
+
+<ion-footer>
+	<ion-toolbar color="primary">
+		<ion-button routerLink="/favorito" fill="clear" expand="full" color="light">
+			<ion-icon slot="start" name="star-half-outline"></ion-icon>
+			Ir a mis lugares favoritos
+		</ion-button>
+	</ion-toolbar>
+</ion-footer>
