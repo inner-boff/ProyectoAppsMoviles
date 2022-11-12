@@ -160,7 +160,12 @@ convertBlobToBase64 = (blob: Blob) => new Promise((resolve, reject) => {
 
 	// eslint-disable-next-line @typescript-eslint/member-ordering
 	async deleteImage(file: LocalFile) {
-		// TODO
+		await Filesystem.deleteFile({
+      directory: Directory.Data,
+      path: file.path
+  });
+  this.loadFiles();
+  this.presentToast('File removed.');
 	}
 
 
