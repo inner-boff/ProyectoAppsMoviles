@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Filesystem, Directory } from '@capacitor/filesystem';
-import { HttpClient } from '@angular/common/http';
+//import { HttpClient } from '@angular/common/http';
 import { LoadingController, Platform, ToastController } from '@ionic/angular';
 import { Camera, CameraResultType, CameraSource, Photo } from '@capacitor/camera';
 
@@ -23,16 +23,16 @@ export class GaleriaFotosPage implements OnInit {
 
   constructor(
     private plt: Platform,
-		private http: HttpClient,
+		//private http: HttpClient,
 		private loadingCtrl: LoadingController,
 		private toastCtrl: ToastController
   ) { }
 
   async ngOnInit() {
-    this.loadFiles();
+    this.cargarArchivos();
   }
 
-  async loadFiles() {
+  async cargarArchivos() {
 		this.images = [];
 
 		const loading = await this.loadingCtrl.create({
@@ -46,7 +46,7 @@ export class GaleriaFotosPage implements OnInit {
 		})
 			.then(
 				(resultado) => {
-					this.loadFileData(resultado.files);
+					this.cargarDataDelArchivo(resultado.files);
 				},
 				async (err) => {
 					await Filesystem.mkdir({
@@ -61,7 +61,7 @@ export class GaleriaFotosPage implements OnInit {
     }
     // Get the actual base64 data of an image
 	// base on the name of the file
-	async loadFileData(fileNames: any[]) {
+	async cargarDataDelArchivo(fileNames: any[]) {
 		for (const f of fileNames) {
 			const filePath = `${IMAGE_DIR}/${f.name}`;
 
@@ -116,7 +116,7 @@ async guardarImagen(photo: Photo) {
 
   // Reload the file list
   // Improve by only loading for the new image and unshifting array!
-  this.loadFiles();
+  this.cargarArchivos();
 }
 
  private async readAsBase64(photo: Photo) {
@@ -158,7 +158,7 @@ convertBlobToBase64 = (blob: Blob) => new Promise((resolve, reject) => {
       directory: Directory.Data,
       path: file.path
   });
-  this.loadFiles();
+  this.cargarArchivos();
   this.presentToast('Archivo eliminado.');
 	}
 
